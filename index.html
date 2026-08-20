@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -6,20 +6,34 @@
 <title>RCY Energia Solar — CRM</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif}
-:root{--azul:#1a5276;--verde:#27ae60;--laranja:#e67e22;--vermelho:#c0392b;--cinza:#95a5a6;--bg:#f0f3f4;--card:#fff;--sombra:0 2px 8px rgba(0,0,0,.12)}
+:root{
+  --azul:#003F5C;
+  --verde:#7AC943;
+  --laranja:#FF7A00;
+  --vermelho:#E63946;
+  --cinza:#95a5a6;
+  --bg:#F4F4F4;
+  --card:#fff;
+  --sombra:0 2px 8px rgba(0,0,0,.12);
+  --azul-claro:#E8F0F5;
+  --verde-claro:#EAF7E0;
+  --laranja-claro:#FFF0E0;
+  --vermelho-claro:#FDEAEA;
+}
 body{background:var(--bg);color:#2c3e50;font-size:14px}
 /* Header */
 .header{background:var(--azul);color:#fff;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.3)}
 .header-logo{display:flex;align-items:center;gap:10px}
-.header-logo img{height:48px;width:auto;border-radius:6px;background:#fff;padding:3px 8px;object-fit:contain}
+.header-logo img{height:48px;width:auto;object-fit:contain}
+.header-logo svg{height:44px;width:auto}
 .header-actions{display:flex;gap:8px;align-items:center}
 .btn{padding:8px 14px;border:none;border-radius:6px;cursor:pointer;font-size:13px;font-weight:600;transition:.2s}
 .btn-primary{background:var(--verde);color:#fff}
-.btn-primary:hover{background:#229954}
+.btn-primary:hover{background:#5fae2e}
 .btn-secondary{background:#fff;color:var(--azul)}
-.btn-secondary:hover{background:#ebf5fb}
+.btn-secondary:hover{background:var(--azul-claro)}
 .btn-danger{background:var(--vermelho);color:#fff}
-.btn-danger:hover{background:#922b21}
+.btn-danger:hover{background:#c1121f}
 .btn-sm{padding:4px 10px;font-size:12px}
 .btn-icon{padding:8px;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;cursor:pointer;border:none;font-size:16px}
 .btn-icon:hover{background:rgba(255,255,255,.3)}
@@ -28,13 +42,13 @@ body{background:var(--bg);color:#2c3e50;font-size:14px}
 .stat-card{min-width:110px;padding:10px 14px;border-radius:8px;background:var(--bg);text-align:center}
 .stat-card .num{font-size:22px;font-weight:700;color:var(--azul)}
 .stat-card .lbl{font-size:11px;color:#7f8c8d;margin-top:2px}
-.stat-card.ativos{background:#d5f5e3}
+.stat-card.ativos{background:var(--verde-claro)}
 .stat-card.ativos .num{color:var(--verde)}
-.stat-card.visitas{background:#d6eaf8}
+.stat-card.visitas{background:var(--azul-claro)}
 .stat-card.visitas .num{color:var(--azul)}
-.stat-card.fup{background:#fdebd0}
+.stat-card.fup{background:var(--laranja-claro)}
 .stat-card.fup .num{color:var(--laranja)}
-.stat-card.atrasados{background:#fadbd8}
+.stat-card.atrasados{background:var(--vermelho-claro)}
 .stat-card.atrasados .num{color:var(--vermelho)}
 .stat-card.total{background:#eaecee}
 .stat-card.arquivados{background:#f2f3f4}
@@ -49,7 +63,7 @@ body{background:var(--bg);color:#2c3e50;font-size:14px}
 .filters select,.filters input{padding:6px 10px;border:1px solid #d5dbdb;border-radius:6px;font-size:13px}
 .filters select{background:#fff}
 .filter-chip{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:2px solid transparent}
-.filter-chip.active{border-color:var(--azul);background:#ebf5fb;color:var(--azul)}
+.filter-chip.active{border-color:var(--azul);background:var(--azul-claro);color:var(--azul)}
 .filter-chip:not(.active){background:var(--bg);color:#7f8c8d}
 /* Dashboard */
 .view{display:none;padding:16px}
@@ -70,21 +84,21 @@ body{background:var(--bg);color:#2c3e50;font-size:14px}
 .comp-table th{background:var(--bg);padding:6px 8px;text-align:left;font-weight:600;color:#7f8c8d;border-radius:4px}
 .comp-table td{padding:6px 8px;border-bottom:1px solid #f0f3f4;text-align:center}
 .comp-table td:first-child{text-align:left;font-weight:600}
-.comp-table tr:hover{background:#ebf5fb}
+.comp-table tr:hover{background:var(--azul-claro)}
 /* Kanban */
 .kanban-board{display:flex;gap:10px;overflow-x:auto;padding-bottom:16px;min-height:500px}
 .kanban-col{min-width:220px;max-width:260px;flex-shrink:0;background:#fff;border-radius:10px;box-shadow:var(--sombra);display:flex;flex-direction:column}
 .kanban-col-header{padding:10px 12px;border-radius:10px 10px 0 0;font-weight:700;font-size:13px;color:#fff;display:flex;justify-content:space-between;align-items:center}
 .kanban-col-body{padding:8px;flex:1;overflow-y:auto;max-height:600px}
 .kanban-card{background:var(--bg);border-radius:8px;padding:10px;margin-bottom:8px;cursor:pointer;transition:.2s;border-left:4px solid var(--cinza)}
-.kanban-card:hover{background:#ebf5fb;transform:translateY(-2px);box-shadow:var(--sombra)}
+.kanban-card:hover{background:var(--azul-claro);transform:translateY(-2px);box-shadow:var(--sombra)}
 .kanban-card .kc-nome{font-weight:700;font-size:13px;margin-bottom:4px}
 .kanban-card .kc-info{font-size:11px;color:#7f8c8d;display:flex;flex-wrap:wrap;gap:4px}
 .kanban-card .kc-badge{padding:1px 6px;border-radius:8px;font-size:10px;font-weight:600}
-.badge-quente{background:#fadbd8;color:var(--vermelho)}
-.badge-morno{background:#fdebd0;color:var(--laranja)}
-.badge-frio{background:#d6eaf8;color:var(--azul)}
-.badge-ativo{background:#d5f5e3;color:var(--verde)}
+.badge-quente{background:var(--vermelho-claro);color:var(--vermelho)}
+.badge-morno{background:var(--laranja-claro);color:var(--laranja)}
+.badge-frio{background:var(--azul-claro);color:var(--azul)}
+.badge-ativo{background:var(--verde-claro);color:var(--verde)}
 .badge-arquivado{background:#f2f3f4;color:#7f8c8d}
 .kanban-col-count{background:rgba(255,255,255,.25);padding:1px 8px;border-radius:10px;font-size:12px}
 /* Forms */
@@ -124,6 +138,7 @@ body{background:var(--bg);color:#2c3e50;font-size:14px}
 .stat-card{min-width:90px}
 .kanban-col{min-width:180px}
 .header-logo img{height:36px}
+.header-logo svg{height:34px}
 }
 </style>
 </head>
@@ -131,8 +146,9 @@ body{background:var(--bg);color:#2c3e50;font-size:14px}
 
 <!-- Header com Logo -->
 <div class="header">
-  <div class="header-logo">
-    <img src="logo.png" alt="RCY Energia Solar" onerror="this.style.display='none';document.getElementById('header-text').style.display='block'">
+  <div class="header-logo" id="header-logo">
+    <!-- A SVG da logo será inserida aqui quando você colar o código -->
+    <img src="logo.svg" alt="RCY Energia Solar" onerror="this.style.display='none';document.getElementById('header-text').style.display='block'">
     <span id="header-text" style="display:none;font-size:18px;font-weight:700">☀️ RCY CRM</span>
   </div>
   <div class="header-actions">
@@ -183,125 +199,48 @@ body{background:var(--bg);color:#2c3e50;font-size:14px}
 <!-- Registrar View -->
 <div class="view" id="view-registrar">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px;margin:0 auto">
-    <!-- Novo Lead -->
     <div class="form-container">
       <h3 style="color:var(--azul);margin-bottom:12px">🎯 Cadastrar Novo Lead</h3>
-      <div class="form-group">
-        <label>Nome / Empresa *</label>
-        <input type="text" id="lead-nome" placeholder="Nome do cliente">
-      </div>
-      <div class="form-group">
-        <label>Telefone</label>
-        <input type="text" id="lead-tel" placeholder="(93) 99999-9999">
-      </div>
-      <div class="form-group">
-        <label>Consultor *</label>
-        <select id="lead-cons"></select>
+      <div class="form-group"><label>Nome / Empresa *</label><input type="text" id="lead-nome" placeholder="Nome do cliente"></div>
+      <div class="form-group"><label>Telefone</label><input type="text" id="lead-tel" placeholder="(93) 99999-9999"></div>
+      <div class="form-group"><label>Consultor *</label><select id="lead-cons"></select></div>
+      <div class="form-row">
+        <div class="form-group"><label>Temperatura</label>
+          <select id="lead-temp"><option value="Frio">❄️ Frio</option><option value="Morno">🌤️ Morno</option><option value="Quente">🔥 Quente</option></select>
+        </div>
+        <div class="form-group"><label>Status</label><input type="text" id="lead-status" placeholder="Ex: Aguardando retorno"></div>
       </div>
       <div class="form-row">
-        <div class="form-group">
-          <label>Temperatura</label>
-          <select id="lead-temp">
-            <option value="Frio">❄️ Frio</option>
-            <option value="Morno">🌤️ Morno</option>
-            <option value="Quente">🔥 Quente</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Status</label>
-          <input type="text" id="lead-status" placeholder="Ex: Aguardando retorno">
+        <div class="form-group"><label>Bairro</label><input type="text" id="lead-bairro" placeholder="Bairro"></div>
+        <div class="form-group"><label>Perfil</label>
+          <select id="lead-perfil"><option value="">Selecione...</option><option value="Residencial">Residencial</option><option value="Comercial">Comercial</option><option value="Rural">Rural</option><option value="Industrial">Industrial</option></select>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Bairro</label>
-          <input type="text" id="lead-bairro" placeholder="Bairro">
-        </div>
-        <div class="form-group">
-          <label>Perfil</label>
-          <select id="lead-perfil">
-            <option value="">Selecione...</option>
-            <option value="Residencial">Residencial</option>
-            <option value="Comercial">Comercial</option>
-            <option value="Rural">Rural</option>
-            <option value="Industrial">Industrial</option>
-          </select>
-        </div>
+      <div class="form-group"><label>Etapa</label>
+        <select id="lead-etapa"><option value="Prospectado">Prospectado</option><option value="FUP 1">FUP 1</option><option value="FUP 2">FUP 2</option><option value="FUP 3">FUP 3</option><option value="FUP 4">FUP 4</option><option value="FUP 5">FUP 5</option><option value="FUP 6">FUP 6</option><option value="Visita Agendada">Visita Agendada</option></select>
       </div>
-      <div class="form-group">
-        <label>Etapa</label>
-        <select id="lead-etapa">
-          <option value="Prospectado">Prospectado</option>
-          <option value="FUP 1">FUP 1</option>
-          <option value="FUP 2">FUP 2</option>
-          <option value="FUP 3">FUP 3</option>
-          <option value="FUP 4">FUP 4</option>
-          <option value="FUP 5">FUP 5</option>
-          <option value="FUP 6">FUP 6</option>
-          <option value="Visita Agendada">Visita Agendada</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Observação</label>
-        <textarea id="lead-obs" placeholder="Notas sobre o lead..."></textarea>
-      </div>
-      <div class="form-actions">
-        <button class="btn btn-primary" onclick="salvarLead()">Cadastrar Lead</button>
-      </div>
+      <div class="form-group"><label>Observação</label><textarea id="lead-obs" placeholder="Notas sobre o lead..."></textarea></div>
+      <div class="form-actions"><button class="btn btn-primary" onclick="salvarLead()">Cadastrar Lead</button></div>
     </div>
-    <!-- Followup -->
     <div class="form-container">
       <h3 style="color:var(--azul);margin-bottom:12px">🔁 Registrar Followup</h3>
-      <div class="form-group">
-        <label>Lead *</label>
-        <select id="fup-lead" onchange="preencherDadosLead()"></select>
+      <div class="form-group"><label>Lead *</label><select id="fup-lead" onchange="preencherDadosLead()"></select></div>
+      <div class="form-row">
+        <div class="form-group"><label>Nome</label><input type="text" id="fup-nome" readonly style="background:var(--bg)"></div>
+        <div class="form-group"><label>Telefone</label><input type="text" id="fup-tel" readonly style="background:var(--bg)"></div>
       </div>
       <div class="form-row">
-        <div class="form-group">
-          <label>Nome</label>
-          <input type="text" id="fup-nome" readonly style="background:var(--bg)">
-        </div>
-        <div class="form-group">
-          <label>Telefone</label>
-          <input type="text" id="fup-tel" readonly style="background:var(--bg)">
+        <div class="form-group"><label>Nº FUP</label><input type="number" id="fup-num" min="1" value="1"></div>
+        <div class="form-group"><label>Canal</label>
+          <select id="fup-canal"><option value="WhatsApp">WhatsApp</option><option value="Ligação">Ligação</option><option value="Visita">Visita</option><option value="E-mail">E-mail</option><option value="Instagram">Instagram</option></select>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Nº FUP</label>
-          <input type="number" id="fup-num" min="1" value="1">
-        </div>
-        <div class="form-group">
-          <label>Canal</label>
-          <select id="fup-canal">
-            <option value="WhatsApp">WhatsApp</option>
-            <option value="Ligação">Ligação</option>
-            <option value="Visita">Visita</option>
-            <option value="E-mail">E-mail</option>
-            <option value="Instagram">Instagram</option>
-          </select>
-        </div>
+      <div class="form-group"><label>Status do FUP</label>
+        <select id="fup-status"><option value="Agendado">Agendado</option><option value="Realizado">Realizado</option><option value="Sem Resposta">Sem Resposta</option><option value="Remarcado">Remarcado</option></select>
       </div>
-      <div class="form-group">
-        <label>Status do FUP</label>
-        <select id="fup-status">
-          <option value="Agendado">Agendado</option>
-          <option value="Realizado">Realizado</option>
-          <option value="Sem Resposta">Sem Resposta</option>
-          <option value="Remarcado">Remarcado</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Próximo Contato</label>
-        <input type="date" id="fup-prox">
-      </div>
-      <div class="form-group">
-        <label>Resposta do Lead</label>
-        <textarea id="fup-resp" placeholder="O que o lead respondeu?"></textarea>
-      </div>
-      <div class="form-actions">
-        <button class="btn btn-primary" onclick="salvarFup()">Registrar FUP</button>
-      </div>
+      <div class="form-group"><label>Próximo Contato</label><input type="date" id="fup-prox"></div>
+      <div class="form-group"><label>Resposta do Lead</label><textarea id="fup-resp" placeholder="O que o lead respondeu?"></textarea></div>
+      <div class="form-actions"><button class="btn btn-primary" onclick="salvarFup()">Registrar FUP</button></div>
     </div>
   </div>
 </div>
@@ -374,623 +313,246 @@ body{background:var(--bg);color:#2c3e50;font-size:14px}
 <div class="toast" id="toast"></div>
 
 <script>
-// ══════════════════════════════════════════════════════════════
-// CONFIGURAÇÃO
-// ══════════════════════════════════════════════════════════════
 var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-m4rgkKNz0DD6s734KUxU5r5FesqDbzCHxJYvHJ7C-JqWJ_MF8HcXwvo6A4z5JRzDjA/exec';
+var estado = {leads:[],consultores:[],filtroAtual:'ativos',carregando:false};
 
-var estado = {
-  leads: [],
-  consultores: [],
-  filtroAtual: 'ativos',
-  carregando: false
-};
-
-// ══════════════════════════════════════════════════════════════
-// CARREGAR DADOS DO GOOGLE SHEETS
-// ══════════════════════════════════════════════════════════════
-function carregarDoSheets() {
-  estado.carregando = true;
-  mostrarLoading(true);
-  var url = SCRIPT_URL + '?acao=lerTudo&_=' + Date.now();
-  fetch(url)
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      if (data.ok) {
-        estado.leads = data.leads || [];
-        estado.consultores = data.consultores || [];
-        try {
-          localStorage.setItem('rcy_cache', JSON.stringify({leads: estado.leads, consultores: estado.consultores, ts: Date.now()}));
-        } catch(e) {}
-        renderTudo();
-        showToast('Dados carregados! ' + estado.leads.length + ' leads.', 'success');
-      } else {
-        throw new Error(data.erro || 'Erro ao carregar');
-      }
-    })
-    .catch(function(err) {
-      try {
-        var cache = JSON.parse(localStorage.getItem('rcy_cache') || '{}');
-        if (cache.leads && cache.leads.length) {
-          estado.leads = cache.leads;
-          estado.consultores = cache.consultores || [];
-          renderTudo();
-          showToast('Sem conexão. Mostrando cache (' + estado.leads.length + ' leads).', 'error');
-        } else {
-          showToast('Erro ao carregar: ' + err.message, 'error');
-        }
-      } catch(e2) {
-        showToast('Erro ao carregar: ' + err.message, 'error');
-      }
-    })
-    .finally(function() {
-      estado.carregando = false;
-      mostrarLoading(false);
-    });
+function carregarDoSheets(){
+  estado.carregando=true;mostrarLoading(true);
+  var url=SCRIPT_URL+'?acao=lerTudo&_='+Date.now();
+  fetch(url).then(function(r){return r.json()}).then(function(data){
+    if(data.ok){
+      estado.leads=data.leads||[];estado.consultores=data.consultores||[];
+      try{localStorage.setItem('rcy_cache',JSON.stringify({leads:estado.leads,consultores:estado.consultores,ts:Date.now()}))}catch(e){}
+      renderTudo();showToast('Dados carregados! '+estado.leads.length+' leads.','success');
+    }else{throw new Error(data.erro||'Erro ao carregar')}
+  }).catch(function(err){
+    try{var cache=JSON.parse(localStorage.getItem('rcy_cache')||'{}');
+      if(cache.leads&&cache.leads.length){estado.leads=cache.leads;estado.consultores=cache.consultores||[];renderTudo();showToast('Sem conexão. Cache local ('+estado.leads.length+' leads).','error')}
+      else{showToast('Erro: '+err.message,'error')}
+    }catch(e2){showToast('Erro: '+err.message,'error')}
+  }).finally(function(){estado.carregando=false;mostrarLoading(false)})
 }
 
-// ══════════════════════════════════════════════════════════════
-// ENVIAR DADOS PARA O SHEETS
-// ══════════════════════════════════════════════════════════════
-function enviarParaSheets(params) {
-  var url = SCRIPT_URL + '?' + params + '&_=' + Date.now();
-  return fetch(url)
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      if (!data.ok) throw new Error(data.erro || 'Erro');
-      return data;
-    });
+function enviarParaSheets(params){
+  return fetch(SCRIPT_URL+'?'+params+'&_='+Date.now()).then(function(r){return r.json()}).then(function(data){if(!data.ok)throw new Error(data.erro||'Erro');return data})
 }
 
-// ══════════════════════════════════════════════════════════════
-// SALVAR LEAD
-// ══════════════════════════════════════════════════════════════
-function salvarLead() {
-  var nome = document.getElementById('lead-nome').value.trim();
-  if (!nome) { showToast('Preencha o nome!', 'error'); return; }
-  var params = 'acao=salvarLead' +
-    '&nome=' + encodeURIComponent(nome) +
-    '&telefone=' + encodeURIComponent(document.getElementById('lead-tel').value.trim()) +
-    '&consultor=' + encodeURIComponent(document.getElementById('lead-cons').value) +
-    '&temp=' + encodeURIComponent(document.getElementById('lead-temp').value) +
-    '&status=' + encodeURIComponent(document.getElementById('lead-status').value.trim()) +
-    '&bairro=' + encodeURIComponent(document.getElementById('lead-bairro').value.trim()) +
-    '&perfil=' + encodeURIComponent(document.getElementById('lead-perfil').value) +
-    '&etapa=' + encodeURIComponent(document.getElementById('lead-etapa').value) +
-    '&obs=' + encodeURIComponent(document.getElementById('lead-obs').value.trim());
-  showToast('Salvando lead...', 'success');
-  enviarParaSheets(params)
-    .then(function(data) {
-      showToast('Lead salvo! ID: ' + data.id, 'success');
-      limparFormLead();
-      carregarDoSheets();
-    })
-    .catch(function(err) {
-      showToast('Erro ao salvar: ' + err.message, 'error');
-    });
+function salvarLead(){
+  var nome=document.getElementById('lead-nome').value.trim();
+  if(!nome){showToast('Preencha o nome!','error');return}
+  var params='acao=salvarLead&nome='+encodeURIComponent(nome)+'&telefone='+encodeURIComponent(document.getElementById('lead-tel').value.trim())+'&consultor='+encodeURIComponent(document.getElementById('lead-cons').value)+'&temp='+encodeURIComponent(document.getElementById('lead-temp').value)+'&status='+encodeURIComponent(document.getElementById('lead-status').value.trim())+'&bairro='+encodeURIComponent(document.getElementById('lead-bairro').value.trim())+'&perfil='+encodeURIComponent(document.getElementById('lead-perfil').value)+'&etapa='+encodeURIComponent(document.getElementById('lead-etapa').value)+'&obs='+encodeURIComponent(document.getElementById('lead-obs').value.trim());
+  showToast('Salvando lead...','success');
+  enviarParaSheets(params).then(function(data){showToast('Lead salvo! ID: '+data.id,'success');limparFormLead();carregarDoSheets()}).catch(function(err){showToast('Erro: '+err.message,'error')})
 }
 
-// ══════════════════════════════════════════════════════════════
-// SALVAR FOLLOWUP (form)
-// ══════════════════════════════════════════════════════════════
-function salvarFup() {
-  var leadSelect = document.getElementById('fup-lead');
-  var idLead = leadSelect.value;
-  if (!idLead) { showToast('Selecione um lead!', 'error'); return; }
-  var lead = estado.leads.find(function(l) { return l.id === idLead; });
-  if (!lead) { showToast('Lead não encontrado!', 'error'); return; }
-  var params = 'acao=salvarFup' +
-    '&idLead=' + encodeURIComponent(idLead) +
-    '&nomeLead=' + encodeURIComponent(lead.nome) +
-    '&telefone=' + encodeURIComponent(lead.tel) +
-    '&consultor=' + encodeURIComponent(lead.cons) +
-    '&bairro=' + encodeURIComponent(lead.bairro) +
-    '&nFup=' + encodeURIComponent(document.getElementById('fup-num').value) +
-    '&canal=' + encodeURIComponent(document.getElementById('fup-canal').value) +
-    '&statusFup=' + encodeURIComponent(document.getElementById('fup-status').value) +
-    '&proxContato=' + encodeURIComponent(document.getElementById('fup-prox').value) +
-    '&resposta=' + encodeURIComponent(document.getElementById('fup-resp').value.trim());
-  showToast('Salvando followup...', 'success');
-  enviarParaSheets(params)
-    .then(function(data) {
-      showToast('Followup salvo!', 'success');
-      limparFormFup();
-      carregarDoSheets();
-    })
-    .catch(function(err) {
-      showToast('Erro: ' + err.message, 'error');
-    });
+function salvarFup(){
+  var idLead=document.getElementById('fup-lead').value;
+  if(!idLead){showToast('Selecione um lead!','error');return}
+  var lead=estado.leads.find(function(l){return l.id===idLead});
+  if(!lead){showToast('Lead não encontrado!','error');return}
+  var params='acao=salvarFup&idLead='+encodeURIComponent(idLead)+'&nomeLead='+encodeURIComponent(lead.nome)+'&telefone='+encodeURIComponent(lead.tel)+'&consultor='+encodeURIComponent(lead.cons)+'&bairro='+encodeURIComponent(lead.bairro)+'&nFup='+encodeURIComponent(document.getElementById('fup-num').value)+'&canal='+encodeURIComponent(document.getElementById('fup-canal').value)+'&statusFup='+encodeURIComponent(document.getElementById('fup-status').value)+'&proxContato='+encodeURIComponent(document.getElementById('fup-prox').value)+'&resposta='+encodeURIComponent(document.getElementById('fup-resp').value.trim());
+  showToast('Salvando followup...','success');
+  enviarParaSheets(params).then(function(data){showToast('Followup salvo!','success');limparFormFup();carregarDoSheets()}).catch(function(err){showToast('Erro: '+err.message,'error')})
 }
 
-// ══════════════════════════════════════════════════════════════
-// SALVAR FOLLOWUP (modal)
-// ══════════════════════════════════════════════════════════════
-function salvarFupModal() {
-  var idLead = document.getElementById('mfup-id').value;
-  if (!idLead) { showToast('Erro: lead não identificado', 'error'); return; }
-  var lead = estado.leads.find(function(l) { return l.id === idLead; });
-  if (!lead) { showToast('Lead não encontrado!', 'error'); return; }
-  var params = 'acao=salvarFup' +
-    '&idLead=' + encodeURIComponent(idLead) +
-    '&nomeLead=' + encodeURIComponent(lead.nome) +
-    '&telefone=' + encodeURIComponent(lead.tel) +
-    '&consultor=' + encodeURIComponent(lead.cons) +
-    '&bairro=' + encodeURIComponent(lead.bairro) +
-    '&nFup=' + encodeURIComponent(document.getElementById('mfup-num').value) +
-    '&canal=' + encodeURIComponent(document.getElementById('mfup-canal').value) +
-    '&statusFup=' + encodeURIComponent(document.getElementById('mfup-status').value) +
-    '&proxContato=' + encodeURIComponent(document.getElementById('mfup-prox').value) +
-    '&resposta=' + encodeURIComponent(document.getElementById('mfup-resp').value.trim());
-  showToast('Salvando followup...', 'success');
-  enviarParaSheets(params)
-    .then(function(data) {
-      showToast('Followup salvo!', 'success');
-      fecharModal('modal-fup');
-      carregarDoSheets();
-    })
-    .catch(function(err) {
-      showToast('Erro: ' + err.message, 'error');
-    });
+function salvarFupModal(){
+  var idLead=document.getElementById('mfup-id').value;
+  if(!idLead){showToast('Erro: lead não identificado','error');return}
+  var lead=estado.leads.find(function(l){return l.id===idLead});
+  if(!lead){showToast('Lead não encontrado!','error');return}
+  var params='acao=salvarFup&idLead='+encodeURIComponent(idLead)+'&nomeLead='+encodeURIComponent(lead.nome)+'&telefone='+encodeURIComponent(lead.tel)+'&consultor='+encodeURIComponent(lead.cons)+'&bairro='+encodeURIComponent(lead.bairro)+'&nFup='+encodeURIComponent(document.getElementById('mfup-num').value)+'&canal='+encodeURIComponent(document.getElementById('mfup-canal').value)+'&statusFup='+encodeURIComponent(document.getElementById('mfup-status').value)+'&proxContato='+encodeURIComponent(document.getElementById('mfup-prox').value)+'&resposta='+encodeURIComponent(document.getElementById('mfup-resp').value.trim());
+  showToast('Salvando followup...','success');
+  enviarParaSheets(params).then(function(data){showToast('Followup salvo!','success');fecharModal('modal-fup');carregarDoSheets()}).catch(function(err){showToast('Erro: '+err.message,'error')})
 }
 
-// ══════════════════════════════════════════════════════════════
-// SALVAR EDIÇÃO DE LEAD
-// ══════════════════════════════════════════════════════════════
-function salvarEdicaoLead() {
-  var id = document.getElementById('edit-id').value;
-  if (!id) { showToast('Erro: ID não encontrado', 'error'); return; }
-  var params = 'acao=salvarLead' +
-    '&id=' + encodeURIComponent(id) +
-    '&consultor=' + encodeURIComponent(document.getElementById('edit-cons').value) +
-    '&nome=' + encodeURIComponent(document.getElementById('edit-nome').value.trim()) +
-    '&telefone=' + encodeURIComponent(document.getElementById('edit-tel').value.trim()) +
-    '&bairro=' + encodeURIComponent(document.getElementById('edit-bairro').value.trim()) +
-    '&perfil=' + encodeURIComponent(document.getElementById('edit-perfil').value) +
-    '&temp=' + encodeURIComponent(document.getElementById('edit-temp').value) +
-    '&etapa=' + encodeURIComponent(document.getElementById('edit-etapa').value) +
-    '&obs=' + encodeURIComponent(document.getElementById('edit-obs').value.trim());
-  showToast('Salvando alterações...', 'success');
-  enviarParaSheets(params)
-    .then(function(data) {
-      showToast('Lead atualizado!', 'success');
-      fecharModal('modal-editar');
-      carregarDoSheets();
-    })
-    .catch(function(err) {
-      showToast('Erro: ' + err.message, 'error');
-    });
+function salvarEdicaoLead(){
+  var id=document.getElementById('edit-id').value;
+  if(!id){showToast('Erro: ID não encontrado','error');return}
+  var params='acao=salvarLead&id='+encodeURIComponent(id)+'&consultor='+encodeURIComponent(document.getElementById('edit-cons').value)+'&nome='+encodeURIComponent(document.getElementById('edit-nome').value.trim())+'&telefone='+encodeURIComponent(document.getElementById('edit-tel').value.trim())+'&bairro='+encodeURIComponent(document.getElementById('edit-bairro').value.trim())+'&perfil='+encodeURIComponent(document.getElementById('edit-perfil').value)+'&temp='+encodeURIComponent(document.getElementById('edit-temp').value)+'&etapa='+encodeURIComponent(document.getElementById('edit-etapa').value)+'&obs='+encodeURIComponent(document.getElementById('edit-obs').value.trim());
+  showToast('Salvando...','success');
+  enviarParaSheets(params).then(function(data){showToast('Lead atualizado!','success');fecharModal('modal-editar');carregarDoSheets()}).catch(function(err){showToast('Erro: '+err.message,'error')})
 }
 
-// ══════════════════════════════════════════════════════════════
-// ARQUIVAR LEAD
-// ══════════════════════════════════════════════════════════════
-function arquivarLead() {
-  var id = document.getElementById('edit-id').value;
-  if (!id) return;
-  if (!confirm('Arquivar este lead?')) return;
-  showToast('Arquivando...', 'success');
-  enviarParaSheets('acao=arquivarLead&id=' + encodeURIComponent(id))
-    .then(function(data) {
-      showToast('Lead arquivado!', 'success');
-      fecharModal('modal-editar');
-      carregarDoSheets();
-    })
-    .catch(function(err) {
-      showToast('Erro: ' + err.message, 'error');
-    });
+function arquivarLead(){
+  var id=document.getElementById('edit-id').value;if(!id)return;
+  if(!confirm('Arquivar este lead?'))return;
+  showToast('Arquivando...','success');
+  enviarParaSheets('acao=arquivarLead&id='+encodeURIComponent(id)).then(function(data){showToast('Lead arquivado!','success');fecharModal('modal-editar');carregarDoSheets()}).catch(function(err){showToast('Erro: '+err.message,'error')})
 }
 
-// ══════════════════════════════════════════════════════════════
-// RENDERIZAÇÃO
-// ══════════════════════════════════════════════════════════════
-function renderTudo() {
-  renderStats();
-  renderDashboard();
-  renderKanban();
-  preencherSelects();
+function renderTudo(){renderStats();renderDashboard();renderKanban();preencherSelects()}
+
+function getLeadsFiltrados(){
+  var cons=document.getElementById('filtroConsultor').value;
+  var busca=(document.getElementById('buscaTexto').value||'').toLowerCase();
+  var filtro=estado.filtroAtual;
+  return estado.leads.filter(function(l){
+    if(cons&&l.cons!==cons)return false;
+    if(busca){var texto=(l.nome+' '+l.bairro+' '+l.tel+' '+l.cons+' '+l.obs).toLowerCase();if(texto.indexOf(busca)===-1)return false}
+    if(filtro==='arquivados'){if(l.situacao!=='arquivado')return false}
+    else if(filtro==='ativos'){if(l.situacao==='arquivado')return false}
+    else if(filtro==='atrasados'){if(l.situacao==='arquivado')return false;var temAtrasado=false;if(l.fups&&l.fups.length){l.fups.forEach(function(f){if(f.prox){var d=new Date(f.prox);if(d<new Date()&&f.st!=='Realizado')temAtrasado=true}})}if(!temAtrasado)return false}
+    else if(filtro==='quentes'){if(l.situacao==='arquivado')return false;if(l.temp!=='Quente')return false}
+    return true
+  })
 }
 
-function getLeadsFiltrados() {
-  var cons = document.getElementById('filtroConsultor').value;
-  var busca = (document.getElementById('buscaTexto').value || '').toLowerCase();
-  var filtro = estado.filtroAtual;
-  return estado.leads.filter(function(l) {
-    if (cons && l.cons !== cons) return false;
-    if (busca) {
-      var texto = (l.nome + ' ' + l.bairro + ' ' + l.tel + ' ' + l.cons + ' ' + l.obs).toLowerCase();
-      if (texto.indexOf(busca) === -1) return false;
-    }
-    if (filtro === 'arquivados') {
-      if (l.situacao !== 'arquivado') return false;
-    } else if (filtro === 'ativos') {
-      if (l.situacao === 'arquivado') return false;
-    } else if (filtro === 'atrasados') {
-      if (l.situacao === 'arquivado') return false;
-      var temAtrasado = false;
-      if (l.fups && l.fups.length) {
-        l.fups.forEach(function(f) {
-          if (f.prox) {
-            var d = new Date(f.prox);
-            if (d < new Date() && f.st !== 'Realizado') temAtrasado = true;
-          }
-        });
-      }
-      if (!temAtrasado) return false;
-    } else if (filtro === 'quentes') {
-      if (l.situacao === 'arquivado') return false;
-      if (l.temp !== 'Quente') return false;
-    }
-    return true;
-  });
+function renderStats(){
+  var ativos=estado.leads.filter(function(l){return l.situacao!=='arquivado'});
+  var arquivados=estado.leads.filter(function(l){return l.situacao==='arquivado'});
+  var visitas=ativos.filter(function(l){return l.etapa==='Visita Agendada'});
+  var emFup=ativos.filter(function(l){return l.etapa&&l.etapa.indexOf('FUP')===0});
+  var atrasados=0;
+  ativos.forEach(function(l){if(l.fups)l.fups.forEach(function(f){if(f.prox){var d=new Date(f.prox);if(d<new Date()&&f.st!=='Realizado')atrasados++}})});
+  document.getElementById('st-ativos').textContent=ativos.length;
+  document.getElementById('st-visitas').textContent=visitas.length;
+  document.getElementById('st-fup').textContent=emFup.length;
+  document.getElementById('st-atrasados').textContent=atrasados;
+  document.getElementById('st-total').textContent=estado.leads.length;
+  document.getElementById('st-arquivados').textContent=arquivados.length;
 }
 
-function renderStats() {
-  var ativos = estado.leads.filter(function(l) { return l.situacao !== 'arquivado'; });
-  var arquivados = estado.leads.filter(function(l) { return l.situacao === 'arquivado'; });
-  var visitas = ativos.filter(function(l) { return l.etapa === 'Visita Agendada'; });
-  var emFup = ativos.filter(function(l) { return l.etapa && l.etapa.indexOf('FUP') === 0; });
-  var atrasados = 0;
-  ativos.forEach(function(l) {
-    if (l.fups) l.fups.forEach(function(f) {
-      if (f.prox) {
-        var d = new Date(f.prox);
-        if (d < new Date() && f.st !== 'Realizado') atrasados++;
-      }
+function renderDashboard(){
+  var grid=document.getElementById('dashGrid');
+  var ativos=estado.leads.filter(function(l){return l.situacao!=='arquivado'});
+  var etapas=['Prospectado','FUP 1','FUP 2','FUP 3','FUP 4','FUP 5','FUP 6','Visita Agendada'];
+  var coresFunil=['#003F5C','#7AC943','#FF7A00','#9b59b6','#1abc9c','#f39c12','#E63946','#27ae60'];
+  var html='';
+
+  // Card 1: Visão Geral
+  html+='<div class="dash-card"><h3>📊 Visão Geral</h3><div class="big-num">'+ativos.length+'</div><div class="sub">Leads ativos no CRM</div><div style="margin-top:12px;font-size:13px;display:flex;flex-direction:column;gap:4px"><div>🔥 Quentes: <b>'+ativos.filter(function(l){return l.temp==='Quente'}).length+'</b></div><div>🌤️ Mornos: <b>'+ativos.filter(function(l){return l.temp==='Morno'}).length+'</b></div><div>❄️ Frios: <b>'+ativos.filter(function(l){return l.temp==='Frio'}).length+'</b></div></div></div>';
+
+  // Card 2: Comparativo de Consultores
+  html+='<div class="dash-card"><h3>👥 Comparativo de Consultores</h3>';
+  if(estado.consultores.length===0){html+='<div class="sub">Nenhum consultor cadastrado.</div>'}
+  else{
+    html+='<table class="comp-table"><thead><tr><th>Consultor</th><th>Leads</th><th>🔥 Quentes</th><th>🏠 Visitas</th><th>📞 FUPs</th><th>⏰ Atrasados</th></tr></thead><tbody>';
+    estado.consultores.forEach(function(c){
+      var leadsCons=ativos.filter(function(l){return l.cons===c});
+      var quentes=leadsCons.filter(function(l){return l.temp==='Quente'}).length;
+      var visitas=leadsCons.filter(function(l){return l.etapa==='Visita Agendada'}).length;
+      var emFup=leadsCons.filter(function(l){return l.etapa&&l.etapa.indexOf('FUP')===0}).length;
+      var atrasados=0;
+      leadsCons.forEach(function(l){if(l.fups)l.fups.forEach(function(f){if(f.prox){var d=new Date(f.prox);if(d<new Date()&&f.st!=='Realizado')atrasados++}})});
+      html+='<tr><td>'+c+'</td><td>'+leadsCons.length+'</td><td style="color:var(--vermelho);font-weight:700">'+quentes+'</td><td style="color:var(--verde);font-weight:700">'+visitas+'</td><td style="color:var(--laranja);font-weight:700">'+emFup+'</td><td style="color:var(--vermelho);font-weight:700">'+atrasados+'</td></tr>';
     });
-  });
-  document.getElementById('st-ativos').textContent = ativos.length;
-  document.getElementById('st-visitas').textContent = visitas.length;
-  document.getElementById('st-fup').textContent = emFup.length;
-  document.getElementById('st-atrasados').textContent = atrasados;
-  document.getElementById('st-total').textContent = estado.leads.length;
-  document.getElementById('st-arquivados').textContent = arquivados.length;
-}
-
-// ══════════════════════════════════════════════════════════════
-// DASHBOARD COMPLETO — Visão Geral + Consultores + Funil + Alertas
-// ══════════════════════════════════════════════════════════════
-function renderDashboard() {
-  var grid = document.getElementById('dashGrid');
-  var ativos = estado.leads.filter(function(l) { return l.situacao !== 'arquivado'; });
-  var etapas = ['Prospectado','FUP 1','FUP 2','FUP 3','FUP 4','FUP 5','FUP 6','Visita Agendada'];
-  var coresFunil = ['#3498db','#2ecc71','#e67e22','#9b59b6','#1abc9c','#f39c12','#e74c3c','#27ae60'];
-
-  var html = '';
-
-  // ── CARD 1: Visão Geral ──
-  html += '<div class="dash-card">' +
-    '<h3>📊 Visão Geral</h3>' +
-    '<div class="big-num">' + ativos.length + '</div>' +
-    '<div class="sub">Leads ativos no CRM</div>' +
-    '<div style="margin-top:12px;font-size:13px;display:flex;flex-direction:column;gap:4px">' +
-      '<div>🔥 Quentes: <b>' + ativos.filter(function(l){return l.temp==='Quente';}).length + '</b></div>' +
-      '<div>🌤️ Mornos: <b>' + ativos.filter(function(l){return l.temp==='Morno';}).length + '</b></div>' +
-      '<div>❄️ Frios: <b>' + ativos.filter(function(l){return l.temp==='Frio';}).length + '</b></div>' +
-    '</div>' +
-  '</div>';
-
-  // ── CARD 2: Comparativo entre Consultores (tabela) ──
-  html += '<div class="dash-card">' +
-    '<h3>👥 Comparativo de Consultores</h3>';
-  if (estado.consultores.length === 0) {
-    html += '<div class="sub">Nenhum consultor cadastrado.</div>';
-  } else {
-    html += '<table class="comp-table">' +
-      '<thead><tr>' +
-        '<th>Consultor</th>' +
-        '<th>Leads</th>' +
-        '<th>🔥 Quentes</th>' +
-        '<th>🏠 Visitas</th>' +
-        '<th>📞 FUPs</th>' +
-        '<th>⏰ Atrasados</th>' +
-      '</tr></thead><tbody>';
-    estado.consultores.forEach(function(c) {
-      var leadsCons = ativos.filter(function(l) { return l.cons === c; });
-      var quentes = leadsCons.filter(function(l) { return l.temp === 'Quente'; }).length;
-      var visitas = leadsCons.filter(function(l) { return l.etapa === 'Visita Agendada'; }).length;
-      var emFup = leadsCons.filter(function(l) { return l.etapa && l.etapa.indexOf('FUP') === 0; }).length;
-      var atrasados = 0;
-      leadsCons.forEach(function(l) {
-        if (l.fups) l.fups.forEach(function(f) {
-          if (f.prox) {
-            var d = new Date(f.prox);
-            if (d < new Date() && f.st !== 'Realizado') atrasados++;
-          }
-        });
-      });
-      html += '<tr>' +
-        '<td>' + c + '</td>' +
-        '<td>' + leadsCons.length + '</td>' +
-        '<td style="color:var(--vermelho);font-weight:700">' + quentes + '</td>' +
-        '<td style="color:var(--verde);font-weight:700">' + visitas + '</td>' +
-        '<td style="color:var(--laranja);font-weight:700">' + emFup + '</td>' +
-        '<td style="color:var(--vermelho);font-weight:700">' + atrasados + '</td>' +
-      '</tr>';
-    });
-    // Linha de totais
-    var totalQuentes = ativos.filter(function(l){return l.temp==='Quente';}).length;
-    var totalVisitas = ativos.filter(function(l){return l.etapa==='Visita Agendada';}).length;
-    var totalFup = ativos.filter(function(l){return l.etapa && l.etapa.indexOf('FUP')===0;}).length;
-    var totalAtrasados = 0;
-    ativos.forEach(function(l) {
-      if (l.fups) l.fups.forEach(function(f) {
-        if (f.prox) { var d = new Date(f.prox); if (d < new Date() && f.st !== 'Realizado') totalAtrasados++; }
-      });
-    });
-    html += '<tr style="border-top:2px solid var(--azul);font-weight:700;background:var(--bg)">' +
-      '<td>TOTAL</td>' +
-      '<td>' + ativos.length + '</td>' +
-      '<td style="color:var(--vermelho)">' + totalQuentes + '</td>' +
-      '<td style="color:var(--verde)">' + totalVisitas + '</td>' +
-      '<td style="color:var(--laranja)">' + totalFup + '</td>' +
-      '<td style="color:var(--vermelho)">' + totalAtrasados + '</td>' +
-    '</tr>';
-    html += '</tbody></table>';
+    var totalQuentes=ativos.filter(function(l){return l.temp==='Quente'}).length;
+    var totalVisitas=ativos.filter(function(l){return l.etapa==='Visita Agendada'}).length;
+    var totalFup=ativos.filter(function(l){return l.etapa&&l.etapa.indexOf('FUP')===0}).length;
+    var totalAtrasados=0;
+    ativos.forEach(function(l){if(l.fups)l.fups.forEach(function(f){if(f.prox){var d=new Date(f.prox);if(d<new Date()&&f.st!=='Realizado')totalAtrasados++}})});
+    html+='<tr style="border-top:2px solid var(--azul);font-weight:700;background:var(--bg)"><td>TOTAL</td><td>'+ativos.length+'</td><td style="color:var(--vermelho)">'+totalQuentes+'</td><td style="color:var(--verde)">'+totalVisitas+'</td><td style="color:var(--laranja)">'+totalFup+'</td><td style="color:var(--vermelho)">'+totalAtrasados+'</td></tr>';
+    html+='</tbody></table>';
   }
-  html += '</div>';
+  html+='</div>';
 
-  // ── CARD 3: Funil de Vendas (barras horizontais) ──
-  html += '<div class="dash-card">' +
-    '<h3>🔄 Funil de Vendas</h3>';
-  var maxEtapa = 1;
-  etapas.forEach(function(e) {
-    var count = ativos.filter(function(l) { return l.etapa === e; }).length;
-    if (count > maxEtapa) maxEtapa = count;
+  // Card 3: Funil de Vendas
+  html+='<div class="dash-card"><h3>🔄 Funil de Vendas</h3>';
+  var maxEtapa=1;
+  etapas.forEach(function(e){var count=ativos.filter(function(l){return l.etapa===e}).length;if(count>maxEtapa)maxEtapa=count});
+  etapas.forEach(function(e,idx){
+    var count=ativos.filter(function(l){return l.etapa===e}).length;
+    var pct=maxEtapa>0?Math.round(count/maxEtapa*100):0;
+    var pctTotal=ativos.length>0?Math.round(count/ativos.length*100):0;
+    html+='<div style="margin-bottom:6px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px"><span style="font-weight:600">'+e+'</span><span>'+count+' ('+pctTotal+'%)</span></div><div style="background:var(--bg);border-radius:6px;overflow:hidden;height:22px"><div class="funil-bar" style="width:'+Math.max(pct,count>0?15:0)+'%;background:'+coresFunil[idx]+'">'+(count>0?count:'')+'</div></div></div>';
   });
-  etapas.forEach(function(e, idx) {
-    var count = ativos.filter(function(l) { return l.etapa === e; }).length;
-    var pct = maxEtapa > 0 ? Math.round(count / maxEtapa * 100) : 0;
-    var pctTotal = ativos.length > 0 ? Math.round(count / ativos.length * 100) : 0;
-    html += '<div style="margin-bottom:6px">' +
-      '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px">' +
-        '<span style="font-weight:600">' + e + '</span>' +
-        '<span>' + count + ' (' + pctTotal + '%)</span>' +
-      '</div>' +
-      '<div style="background:var(--bg);border-radius:6px;overflow:hidden;height:22px">' +
-        '<div class="funil-bar" style="width:' + Math.max(pct, count > 0 ? 15 : 0) + '%;background:' + coresFunil[idx] + '">' +
-          (count > 0 ? count : '') +
-        '</div>' +
-      '</div>' +
-    '</div>';
-  });
-  html += '</div>';
+  html+='</div>';
 
-  // ── CARD 4: Alertas FUP Atrasados ──
-  var alertas = [];
-  ativos.forEach(function(l) {
-    if (l.fups) l.fups.forEach(function(f) {
-      if (f.prox) {
-        var d = new Date(f.prox);
-        if (d < new Date() && f.st !== 'Realizado') {
-          alertas.push({lead: l, fup: f});
-        }
-      }
-    });
-  });
-  html += '<div class="dash-card">' +
-    '<h3>⚠️ Alertas FUP Atrasados</h3>';
-  if (alertas.length === 0) {
-    html += '<div class="sub">Nenhum FUP atrasado! ✅</div>';
-  } else {
-    html += '<div class="sub" style="margin-bottom:8px">' + alertas.length + ' followup(s) atrasado(s)</div>';
-    alertas.slice(0, 10).forEach(function(a) {
-      var diasAtraso = Math.floor((new Date() - new Date(a.fup.prox)) / (1000*60*60*24));
-      html += '<div class="consultor-row">' +
-        '<div>' +
-          '<span class="nome" style="font-size:13px">' + a.lead.nome + '</span>' +
-          '<div style="font-size:11px;color:#7f8c8d">👤 ' + a.lead.cons + ' • FUP ' + a.fup.n + ' • ' + diasAtraso + ' dia(s) de atraso</div>' +
-        '</div>' +
-        '<span class="qtd" style="background:#fadbd8;color:var(--vermelho);font-size:11px">' + a.fup.prox + '</span>' +
-      '</div>';
+  // Card 4: Alertas FUP
+  var alertas=[];
+  ativos.forEach(function(l){if(l.fups)l.fups.forEach(function(f){if(f.prox){var d=new Date(f.prox);if(d<new Date()&&f.st!=='Realizado')alertas.push({lead:l,fup:f})}})});
+  html+='<div class="dash-card"><h3>⚠️ Alertas FUP Atrasados</h3>';
+  if(alertas.length===0){html+='<div class="sub">Nenhum FUP atrasado! ✅</div>'}
+  else{
+    html+='<div class="sub" style="margin-bottom:8px">'+alertas.length+' followup(s) atrasado(s)</div>';
+    alertas.slice(0,10).forEach(function(a){
+      var diasAtraso=Math.floor((new Date()-new Date(a.fup.prox))/(1000*60*60*24));
+      html+='<div class="consultor-row"><div><span class="nome" style="font-size:13px">'+a.lead.nome+'</span><div style="font-size:11px;color:#7f8c8d">👤 '+a.lead.cons+' • FUP '+a.fup.n+' • '+diasAtraso+' dia(s) de atraso</div></div><span class="qtd" style="background:var(--vermelho-claro);color:var(--vermelho);font-size:11px">'+a.fup.prox+'</span></div>';
     });
   }
-  html += '</div>';
-
-  grid.innerHTML = html;
+  html+='</div>';
+  grid.innerHTML=html;
 }
 
-// ══════════════════════════════════════════════════════════════
-// KANBAN
-// ══════════════════════════════════════════════════════════════
-function renderKanban() {
-  var board = document.getElementById('kanbanBoard');
-  var leads = getLeadsFiltrados();
-  var etapas = ['Prospectado','FUP 1','FUP 2','FUP 3','FUP 4','FUP 5','FUP 6','Visita Agendada'];
-  var cores = ['#3498db','#2ecc71','#e67e22','#9b59b6','#1abc9c','#f39c12','#e74c3c','#27ae60'];
-  var html = '';
-  etapas.forEach(function(etapa, idx) {
-    var leadsEtapa = leads.filter(function(l) { return l.etapa === etapa; });
-    html += '<div class="kanban-col">' +
-      '<div class="kanban-col-header" style="background:' + cores[idx] + '">' +
-        '<span>' + etapa + '</span>' +
-        '<span class="kanban-col-count">' + leadsEtapa.length + '</span>' +
-      '</div>' +
-      '<div class="kanban-col-body">';
-    leadsEtapa.forEach(function(l) {
-      var tempClass = l.temp === 'Quente' ? 'badge-quente' : l.temp === 'Morno' ? 'badge-morno' : 'badge-frio';
-      var sitClass = l.situacao === 'arquivado' ? 'badge-arquivado' : 'badge-ativo';
-      var fupCount = l.fups ? l.fups.length : 0;
-      html += '<div class="kanban-card" onclick="abrirModalEditar(\'' + l.id + '\')" style="border-left-color:' + cores[idx] + '">' +
-        '<div class="kc-nome">' + l.nome + '</div>' +
-        '<div class="kc-info">' +
-          '<span class="kc-badge ' + tempClass + '">' + (l.temp || 'Frio') + '</span>' +
-          '<span class="kc-badge ' + sitClass + '">' + (l.situacao === 'arquivado' ? 'Arquivado' : 'Ativo') + '</span>' +
-          (fupCount > 0 ? '<span>📞 ' + fupCount + ' FUP</span>' : '') +
-          (l.bairro ? '<span>📍 ' + l.bairro + '</span>' : '') +
-          (l.cons ? '<span>👤 ' + l.cons + '</span>' : '') +
-        '</div>' +
-      '</div>';
+function renderKanban(){
+  var board=document.getElementById('kanbanBoard');
+  var leads=getLeadsFiltrados();
+  var etapas=['Prospectado','FUP 1','FUP 2','FUP 3','FUP 4','FUP 5','FUP 6','Visita Agendada'];
+  var cores=['#003F5C','#7AC943','#FF7A00','#9b59b6','#1abc9c','#f39c12','#E63946','#27ae60'];
+  var html='';
+  etapas.forEach(function(etapa,idx){
+    var leadsEtapa=leads.filter(function(l){return l.etapa===etapa});
+    html+='<div class="kanban-col"><div class="kanban-col-header" style="background:'+cores[idx]+'"><span>'+etapa+'</span><span class="kanban-col-count">'+leadsEtapa.length+'</span></div><div class="kanban-col-body">';
+    leadsEtapa.forEach(function(l){
+      var tempClass=l.temp==='Quente'?'badge-quente':l.temp==='Morno'?'badge-morno':'badge-frio';
+      var sitClass=l.situacao==='arquivado'?'badge-arquivado':'badge-ativo';
+      var fupCount=l.fups?l.fups.length:0;
+      html+='<div class="kanban-card" onclick="abrirModalEditar(\''+l.id+'\')" style="border-left-color:'+cores[idx]+'"><div class="kc-nome">'+l.nome+'</div><div class="kc-info"><span class="kc-badge '+tempClass+'">'+(l.temp||'Frio')+'</span><span class="kc-badge '+sitClass+'">'+(l.situacao==='arquivado'?'Arquivado':'Ativo')+'</span>'+(fupCount>0?'<span>📞 '+fupCount+' FUP</span>':'')+(l.bairro?'<span>📍 '+l.bairro+'</span>':'')+(l.cons?'<span>👤 '+l.cons+'</span>':'')+'</div></div>';
     });
-    html += '</div></div>';
+    html+='</div></div>';
   });
-  board.innerHTML = html;
+  board.innerHTML=html;
 }
 
-// ══════════════════════════════════════════════════════════════
-// MODAIS
-// ══════════════════════════════════════════════════════════════
-function abrirModalLead() {
-  trocarView('registrar', document.querySelector('.nav-tab:last-child'));
-  document.getElementById('lead-nome').focus();
-}
+function abrirModalLead(){trocarView('registrar',document.querySelector('.nav-tab:last-child'));document.getElementById('lead-nome').focus()}
 
-function abrirModalEditar(id) {
-  var lead = estado.leads.find(function(l) { return l.id === id; });
-  if (!lead) return;
-  document.getElementById('edit-id').value = lead.id;
-  document.getElementById('edit-nome').value = lead.nome || '';
-  document.getElementById('edit-tel').value = lead.tel || '';
-  document.getElementById('edit-bairro').value = lead.bairro || '';
-  document.getElementById('edit-obs').value = lead.obs || '';
-  setSelect('edit-cons', lead.cons);
-  setSelect('edit-temp', lead.temp);
-  setSelect('edit-perfil', lead.perfil);
-  setSelect('edit-etapa', lead.etapa);
-  var histHtml = '';
-  if (lead.fups && lead.fups.length) {
-    histHtml = '<div class="fup-history"><h3 style="font-size:13px;color:var(--azul);margin-bottom:8px">📞 Histórico de Followups</h3>';
-    lead.fups.forEach(function(f) {
-      histHtml += '<div class="fup-item">' +
-        '<span class="fup-n">FUP ' + f.n + '</span> — ' +
-        (f.canal || '') + ' | ' + (f.st || '') +
-        (f.prox ? ' | Próx: ' + f.prox : '') +
-        (f.resp ? '<br>💬 ' + f.resp : '') +
-        (f.data ? '<br>📅 ' + f.data : '') +
-      '</div>';
-    });
-    histHtml += '</div>';
+function abrirModalEditar(id){
+  var lead=estado.leads.find(function(l){return l.id===id});if(!lead)return;
+  document.getElementById('edit-id').value=lead.id;
+  document.getElementById('edit-nome').value=lead.nome||'';
+  document.getElementById('edit-tel').value=lead.tel||'';
+  document.getElementById('edit-bairro').value=lead.bairro||'';
+  document.getElementById('edit-obs').value=lead.obs||'';
+  setSelect('edit-cons',lead.cons);setSelect('edit-temp',lead.temp);setSelect('edit-perfil',lead.perfil);setSelect('edit-etapa',lead.etapa);
+  var histHtml='';
+  if(lead.fups&&lead.fups.length){
+    histHtml='<div class="fup-history"><h3 style="font-size:13px;color:var(--azul);margin-bottom:8px">📞 Histórico de Followups</h3>';
+    lead.fups.forEach(function(f){histHtml+='<div class="fup-item"><span class="fup-n">FUP '+f.n+'</span> — '+(f.canal||'')+' | '+(f.st||'')+(f.prox?' | Próx: '+f.prox:'')+(f.resp?'<br>💬 '+f.resp:'')+(f.data?'<br>📅 '+f.data:'')+'</div>'});
+    histHtml+='</div>';
   }
-  document.getElementById('fup-history').innerHTML = histHtml;
+  document.getElementById('fup-history').innerHTML=histHtml;
   document.getElementById('modal-editar').classList.add('show');
 }
 
-function abrirModalFup(id) {
-  var lead = estado.leads.find(function(l) { return l.id === id; });
-  if (!lead) return;
-  document.getElementById('mfup-id').value = lead.id;
-  document.getElementById('mfup-nome').value = lead.nome;
-  var proxNum = (lead.fups ? lead.fups.length + 1 : 1);
-  document.getElementById('mfup-num').value = proxNum;
-  document.getElementById('mfup-canal').value = 'WhatsApp';
-  document.getElementById('mfup-status').value = 'Agendado';
-  document.getElementById('mfup-prox').value = '';
-  document.getElementById('mfup-resp').value = '';
+function abrirModalFup(id){
+  var lead=estado.leads.find(function(l){return l.id===id});if(!lead)return;
+  document.getElementById('mfup-id').value=lead.id;
+  document.getElementById('mfup-nome').value=lead.nome;
+  document.getElementById('mfup-num').value=(lead.fups?lead.fups.length+1:1);
+  document.getElementById('mfup-canal').value='WhatsApp';
+  document.getElementById('mfup-status').value='Agendado';
+  document.getElementById('mfup-prox').value='';
+  document.getElementById('mfup-resp').value='';
   document.getElementById('modal-fup').classList.add('show');
 }
 
-function fecharModal(id) {
-  document.getElementById(id).classList.remove('show');
+function fecharModal(id){document.getElementById(id).classList.remove('show')}
+
+function preencherSelects(){
+  var consOptions='<option value="">Todos os Consultores</option>';
+  estado.consultores.forEach(function(c){consOptions+='<option value="'+c+'">'+c+'</option>'});
+  document.getElementById('filtroConsultor').innerHTML=consOptions;
+  ['lead-cons','edit-cons'].forEach(function(id){var sel=document.getElementById(id);if(!sel)return;var current=sel.value;var opts='';estado.consultores.forEach(function(c){opts+='<option value="'+c+'">'+c+'</option>'});sel.innerHTML=opts;if(current)sel.value=current});
+  var fupSel=document.getElementById('fup-lead');
+  if(fupSel){var currentFup=fupSel.value;var opts='<option value="">Selecione um lead...</option>';estado.leads.filter(function(l){return l.situacao!=='arquivado'}).forEach(function(l){opts+='<option value="'+l.id+'">'+l.id+' — '+l.nome+' ('+l.cons+')</option>'});fupSel.innerHTML=opts;if(currentFup)fupSel.value=currentFup}
 }
 
-// ══════════════════════════════════════════════════════════════
-// SELECTS
-// ══════════════════════════════════════════════════════════════
-function preencherSelects() {
-  var consOptions = '<option value="">Todos os Consultores</option>';
-  estado.consultores.forEach(function(c) {
-    consOptions += '<option value="' + c + '">' + c + '</option>';
-  });
-  document.getElementById('filtroConsultor').innerHTML = consOptions;
-  ['lead-cons','edit-cons'].forEach(function(id) {
-    var sel = document.getElementById(id);
-    if (!sel) return;
-    var current = sel.value;
-    var opts = '';
-    estado.consultores.forEach(function(c) {
-      opts += '<option value="' + c + '">' + c + '</option>';
-    });
-    sel.innerHTML = opts;
-    if (current) sel.value = current;
-  });
-  var fupSel = document.getElementById('fup-lead');
-  if (fupSel) {
-    var currentFup = fupSel.value;
-    var opts = '<option value="">Selecione um lead...</option>';
-    estado.leads.filter(function(l) { return l.situacao !== 'arquivado'; }).forEach(function(l) {
-      opts += '<option value="' + l.id + '">' + l.id + ' — ' + l.nome + ' (' + l.cons + ')</option>';
-    });
-    fupSel.innerHTML = opts;
-    if (currentFup) fupSel.value = currentFup;
-  }
+function preencherDadosLead(){
+  var id=document.getElementById('fup-lead').value;
+  var lead=estado.leads.find(function(l){return l.id===id});
+  if(lead){document.getElementById('fup-nome').value=lead.nome||'';document.getElementById('fup-tel').value=lead.tel||'';document.getElementById('fup-num').value=(lead.fups?lead.fups.length+1:1)}
 }
 
-function preencherDadosLead() {
-  var id = document.getElementById('fup-lead').value;
-  var lead = estado.leads.find(function(l) { return l.id === id; });
-  if (lead) {
-    document.getElementById('fup-nome').value = lead.nome || '';
-    document.getElementById('fup-tel').value = lead.tel || '';
-    var proxNum = (lead.fups ? lead.fups.length + 1 : 1);
-    document.getElementById('fup-num').value = proxNum;
-  }
-}
+function setSelect(id,val){var sel=document.getElementById(id);if(!sel)return;for(var i=0;i<sel.options.length;i++){if(sel.options[i].value===val){sel.selectedIndex=i;return}}}
 
-function setSelect(id, val) {
-  var sel = document.getElementById(id);
-  if (!sel) return;
-  for (var i = 0; i < sel.options.length; i++) {
-    if (sel.options[i].value === val) { sel.selectedIndex = i; return; }
-  }
-}
+function trocarView(nome,btn){document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active')});document.getElementById('view-'+nome).classList.add('active');document.querySelectorAll('.nav-tab').forEach(function(t){t.classList.remove('active')});if(btn)btn.classList.add('active')}
+function setFiltro(el,filtro){estado.filtroAtual=filtro;document.querySelectorAll('.filter-chip').forEach(function(c){c.classList.remove('active')});el.classList.add('active');renderTudo()}
+function limparFormLead(){['lead-nome','lead-tel','lead-status','lead-bairro','lead-obs'].forEach(function(id){document.getElementById(id).value=''});document.getElementById('lead-temp').value='Frio';document.getElementById('lead-perfil').value='';document.getElementById('lead-etapa').value='Prospectado'}
+function limparFormFup(){document.getElementById('fup-lead').value='';document.getElementById('fup-nome').value='';document.getElementById('fup-tel').value='';document.getElementById('fup-num').value='1';document.getElementById('fup-canal').value='WhatsApp';document.getElementById('fup-status').value='Agendado';document.getElementById('fup-prox').value='';document.getElementById('fup-resp').value=''}
+function mostrarLoading(show){var el=document.getElementById('loading');if(el)el.classList.toggle('show',show)}
+function showToast(msg,tipo){var t=document.getElementById('toast');t.textContent=msg;t.className='toast '+(tipo||'success')+' show';setTimeout(function(){t.classList.remove('show')},3500)}
 
-// ══════════════════════════════════════════════════════════════
-// UTILITÁRIOS
-// ══════════════════════════════════════════════════════════════
-function trocarView(nome, btn) {
-  document.querySelectorAll('.view').forEach(function(v) { v.classList.remove('active'); });
-  document.getElementById('view-' + nome).classList.add('active');
-  document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
-  if (btn) btn.classList.add('active');
-}
-
-function setFiltro(el, filtro) {
-  estado.filtroAtual = filtro;
-  document.querySelectorAll('.filter-chip').forEach(function(c) { c.classList.remove('active'); });
-  el.classList.add('active');
-  renderTudo();
-}
-
-function limparFormLead() {
-  ['lead-nome','lead-tel','lead-status','lead-bairro','lead-obs'].forEach(function(id) {
-    document.getElementById(id).value = '';
-  });
-  document.getElementById('lead-temp').value = 'Frio';
-  document.getElementById('lead-perfil').value = '';
-  document.getElementById('lead-etapa').value = 'Prospectado';
-}
-
-function limparFormFup() {
-  document.getElementById('fup-lead').value = '';
-  document.getElementById('fup-nome').value = '';
-  document.getElementById('fup-tel').value = '';
-  document.getElementById('fup-num').value = '1';
-  document.getElementById('fup-canal').value = 'WhatsApp';
-  document.getElementById('fup-status').value = 'Agendado';
-  document.getElementById('fup-prox').value = '';
-  document.getElementById('fup-resp').value = '';
-}
-
-function mostrarLoading(show) {
-  var el = document.getElementById('loading');
-  if (el) el.classList.toggle('show', show);
-}
-
-function showToast(msg, tipo) {
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast ' + (tipo || 'success') + ' show';
-  setTimeout(function() { t.classList.remove('show'); }, 3500);
-}
-
-// ══════════════════════════════════════════════════════════════
-// INICIALIZAÇÃO
-// ══════════════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', function() {
-  carregarDoSheets();
-  setInterval(function() {
-    if (!estado.carregando) carregarDoSheets();
-  }, 60000);
-});
+document.addEventListener('DOMContentLoaded',function(){carregarDoSheets();setInterval(function(){if(!estado.carregando)carregarDoSheets()},60000)});
 </script>
 </body>
 </html>
